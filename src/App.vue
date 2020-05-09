@@ -17,6 +17,15 @@
     <i class="iconfont iconyoujiantou"></i>
     <i class="iconfont iconshipin"></i>
     <i class="iconfont iconwuwangluo"></i>
+    <div>
+      <van-icon name="chat-o" />
+      <van-icon name="cart-o" dot />
+      <van-icon name="cart-o" badge="123" />
+    </div>
+    <div>
+      <van-button icon="star-o" type="primary" />
+      <van-button icon="chat" type="primary" />
+    </div>
   </div>
 </template>
 
