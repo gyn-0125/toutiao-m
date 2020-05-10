@@ -55,7 +55,10 @@
 </template>
 
 <script>
-import { login } from '@/api/user'
+import {
+  login,
+  sendSms
+} from '@/api/user'
 // import { Toast } from 'vant'
 
 export default {
@@ -116,12 +119,27 @@ export default {
     },
     async onSendSms () {
       try {
+        // 校验手机号
         await this.$refs['login-form'].validate('mobile')
         // 验证通过，请求发送验证码
+        const res = await sendSms(this.user.mobile)
+        console.log(res)
       } catch (err) {
+        let message = ''
+        if (err && err.response && err.response.status === 429) {
+          // 发送短信失败的错误提示
+          message = '发送太频繁了，请稍后重试'
+        } else if (err.name === 'mobile') {
+          // 表单验证失败的错误提示
+          message = err.message
+        } else {
+          message = '发送失败，请稍后重试'
+        }
+
+        // 提示用户
         this.$toast({
-          message: err.message,
-          position: 'top' // 防止手机键盘太高，看不见提示消息
+          message,
+          position: 'top'
         })
       }
       // 校验手机号
