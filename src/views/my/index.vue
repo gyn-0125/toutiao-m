@@ -47,6 +47,18 @@
             </div>
           </van-grid-item>
         </van-grid>
+        <van-grid :column-num="2">
+          <van-grid-item
+            icon-prefix="iconfont icon"
+            icon="shoucang"
+            text="文字"
+          />
+          <van-grid-item
+            icon-prefix="iconfont icon"
+            icon="lishi"
+            text="文字"
+          />
+        </van-grid>
       </van-cell-group>
     </div>
   </div>
