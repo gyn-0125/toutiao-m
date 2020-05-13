@@ -18,25 +18,47 @@
       <van-tab title="标签 3">内容 3</van-tab>
       <van-tab title="标签 4">内容 4</van-tab>
       <van-tab title="标签 5">内容 5</van-tab>
+      <van-tab
+        :title="channel.name"
+        v-for="channel in channels"
+        :key="channel.id"
+      >
+        <!-- 文章列表 -->
+        <article-list :channel="channel" />
+      </van-tab>
     </van-tabs>
   </div>
 </template>
 
 <script>
+import { getUserChannels } from '@/api/user'
+import ArticleList from './components/article-list'
+
 export default {
   name: 'HomeIndex',
   props: {},
-  components: {},
+  components: {
+    ArticleList
+  },
   data () {
     return {
-      active: 0 // 控制被激活的标签
+      active: 0, // 控制被激活的标签
+      channels: []
     }
   },
   computed: {},
   watch: {},
-  created () {},
+  created () {
+    this.loadChannels()
+  },
   mounted () {},
-  methods: {}
+  methods: {
+    async loadChannels () {
+      // 请求获取频道数据
+      const { data } = await getUserChannels()
+      this.channels = data.data.channels
+    }
+  }
 }
 </script>
 
