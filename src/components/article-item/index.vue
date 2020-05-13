@@ -1,6 +1,6 @@
 <template>
   <van-cell class="article-item">
-    <div slot="title">{{ article.title }}</div>
+    <div slot="title" class="title van-multi-ellipsis--l3">{{ article.title }}</div>
     <div slot="label">
       <div
         v-if="article.cover.type === 3"
@@ -8,8 +8,7 @@
       >
         <div class="cover-wrap-item">
           <van-image
-            width="116"
-            height="73"
+            class="right-cover"
             fit="cover"
             v-for="(img,index) in article.cover.images"
             :key="index"
@@ -55,4 +54,21 @@ export default {
 }
 </script>
 
-<style lang='less' scoped></style>
+<style lang='less' scoped>
+.article-item {
+  .title {
+    font-size: 16px;
+    color: #3a3a3a;
+  }
+  /deep/ .van-cell__value {
+    flex: unset;
+    width: 116px;
+    height: 73px;
+    margin-left: 12px;
+  }
+  .right-cover {
+    width: 116px;
+    height: 73px;
+  }
+}
+</style>
