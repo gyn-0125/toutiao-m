@@ -15,6 +15,8 @@ import 'amfe-flexible'
 import './styles/index.less'
 import './styles/icon.less'
 
+import './utils/dayjs'
+
 // 全局注册 Vant 中的组件
 Vue.use(Vant)
 
