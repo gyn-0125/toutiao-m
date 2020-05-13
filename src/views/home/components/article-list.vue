@@ -58,4 +58,13 @@ export default {
 }
 </script>
 
-<style lang='less' scoped></style>
+<style lang='less' scoped>
+.article-list {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 50px;
+  top: 90px;
+  overflow-y: auto;
+}
+</style>
