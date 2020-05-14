@@ -26,7 +26,19 @@
         <!-- 文章列表 -->
         <article-list :channel="channel" />
       </van-tab>
+      <div slot="nav-right" class="">hello</div>
     </van-tabs>
+
+    <!-- 频道弹出层 -->
+    <van-popup
+      v-model="isChannelEditShow"
+      position="bottom"
+      class="channel-edit-popup"
+      closeable
+      close-icon-position="top-left"
+      get-container="body"
+      style="height: 100%;"
+    />
   </div>
 </template>
 
@@ -43,7 +55,8 @@ export default {
   data () {
     return {
       active: 0, // 控制被激活的标签
-      channels: []
+      channels: [],
+      isChannelEditShow: false
     }
   },
   computed: {},
