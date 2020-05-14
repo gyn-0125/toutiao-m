@@ -12,12 +12,7 @@
     </van-nav-bar>
 
     <!-- 文章频道列表 -->
-    <van-tabs v-model="active">
-      <van-tab title="标签 1">内容 1</van-tab>
-      <van-tab title="标签 2">内容 2</van-tab>
-      <van-tab title="标签 3">内容 3</van-tab>
-      <van-tab title="标签 4">内容 4</van-tab>
-      <van-tab title="标签 5">内容 5</van-tab>
+    <van-tabs v-model="active" class="channel-tabs">
       <van-tab
         :title="channel.name"
         v-for="channel in channels"
@@ -26,7 +21,14 @@
         <!-- 文章列表 -->
         <article-list :channel="channel" />
       </van-tab>
-      <div slot="nav-right" class="">hello</div>
+      <div slot="nav-right" class="wap-nav-placeholder"></div>
+      <div
+        slot="nav-right"
+        @click="isChannelEditShow = true"
+        class="wap-nav-wrap"
+      >
+        <van-icon name="wap-nav"/>
+      </div>
     </van-tabs>
 
     <!-- 频道弹出层 -->
@@ -38,19 +40,23 @@
       close-icon-position="top-left"
       get-container="body"
       style="height: 100%;"
-    />
+    >
+      <channel-edit />
+    </van-popup>
   </div>
 </template>
 
 <script>
 import { getUserChannels } from '@/api/user'
 import ArticleList from './components/article-list'
+import ChannelEdit from './components/channel-edit'
 
 export default {
   name: 'HomeIndex',
   props: {},
   components: {
-    ArticleList
+    ArticleList,
+    ChannelEdit
   },
   data () {
     return {
@@ -89,6 +95,45 @@ export default {
     }
     .van-button__text {
       font-size: 14px;
+    }
+  }
+  .channel-tabs {
+    /deep/ .van-tab {
+      border-right: 1px solid #edeff3;
+      border-bottom: 1px solid #edeff3;
+    }
+    /deep/ .van-tabs__line {
+      bottom: 20px;
+      width: 15px !important;
+      height: 3px;
+      background: #3296fa;
+    }
+  }
+  .wap-nav-placeholder {
+    width: 33px;
+    flex-shrink: 0;
+  }
+  .wap-nav-wrap {
+    position: fixed;
+    right: 0;
+    width: 33px;
+    height: 44px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: .9;
+    .van-icon {
+      font-size: 24px;
+    }
+    &:before {
+      content: '';
+      width: 1px;
+      height: 43px;
+      position: absolute;
+      background-color: #c8c8c8;
+      left: 0;
+      top: 0;
     }
   }
 }
