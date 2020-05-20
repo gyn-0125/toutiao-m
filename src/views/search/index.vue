@@ -15,6 +15,7 @@
     <search-suggestion />
 
     <!-- 历史记录 -->
+    <search-history />
 
     <!-- 搜索结果 -->
   </div>
@@ -22,12 +23,14 @@
 
 <script>
 import SearchSuggestion from './components/search-suggestion'
+import SearchHistory from './components/search-history'
 
 export default {
   name: 'SearchIndex',
   props: {},
   components: {
-    SearchSuggestion
+    SearchSuggestion,
+    SearchHistory
   },
   data () {
     return {
