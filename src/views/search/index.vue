@@ -18,19 +18,22 @@
     <search-history />
 
     <!-- 搜索结果 -->
+    <search-result />
   </div>
 </template>
 
 <script>
 import SearchSuggestion from './components/search-suggestion'
 import SearchHistory from './components/search-history'
+import SearchResult from './components/search-result'
 
 export default {
   name: 'SearchIndex',
   props: {},
   components: {
     SearchSuggestion,
-    SearchHistory
+    SearchHistory,
+    SearchResult
   },
   data () {
     return {
