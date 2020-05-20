@@ -1,5 +1,22 @@
 <template>
-  <div class="search-container">文章搜索</div>
+  <div class="search-container">
+    <!-- 搜索栏 -->
+    <form action="/">
+      <van-search
+        v-model="searchText"
+        placeholder="请输入搜索关键词"
+        show-action
+        @search="onSearch"
+        @cancel="$router.back()"
+      />
+    </form>
+
+    <!-- 联想建议 -->
+
+    <!-- 历史记录 -->
+
+    <!-- 搜索结果 -->
+  </div>
 </template>
 
 <script>
@@ -8,13 +25,19 @@ export default {
   props: {},
   components: {},
   data () {
-    return {}
+    return {
+      searchText: '' // 搜索输入框的内容
+    }
   },
   computed: {},
   watch: {},
   created () {},
   mounted () {},
-  methods: {}
+  methods: {
+    onSearch () {
+      console.log('onSearch')
+    }
+  }
 }
 </script>
 
