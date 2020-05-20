@@ -117,7 +117,7 @@ export default {
     position: fixed;
     right: 0;
     width: 33px;
-    height: 44px;
+    height: 43px;
     background-color: #fff;
     display: flex;
     justify-content: center;
@@ -129,11 +129,12 @@ export default {
     &:before {
       content: '';
       width: 1px;
-      height: 43px;
+      height: 38px;
       position: absolute;
       background-color: #c8c8c8;
       left: 0;
-      top: 0;
+      top: 3px;
+      bottom: 0;
     }
   }
 }
