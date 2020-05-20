@@ -8,17 +8,19 @@
         show-action
         @search="onSearch"
         @cancel="$router.back()"
+        @focus="isResultShow = false"
       />
     </form>
 
+    <!-- 搜索结果 -->
+    <search-result v-if="isResultShow" />
+
     <!-- 联想建议 -->
-    <search-suggestion />
+    <search-suggestion v-else-if="searchText" />
 
     <!-- 历史记录 -->
-    <search-history />
+    <search-history v-else />
 
-    <!-- 搜索结果 -->
-    <search-result />
   </div>
 </template>
 
@@ -37,7 +39,8 @@ export default {
   },
   data () {
     return {
-      searchText: '' // 搜索输入框的内容
+      searchText: '', // 搜索输入框的内容
+      isResultShow: false // 控制搜索结果的显示状态
     }
   },
   computed: {},
@@ -47,6 +50,9 @@ export default {
   methods: {
     onSearch () {
       console.log('onSearch')
+
+      // 展示搜索结果
+      this.isResultShow = true
     }
   }
 }

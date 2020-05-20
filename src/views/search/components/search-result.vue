@@ -49,4 +49,13 @@ export default {
 }
 </script>
 
-<style lang='less' scoped></style>
+<style lang='less' scoped>
+.search-result {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 54px;
+  bottom: 0;
+  overflow-y: auto;
+}
+</style>
