@@ -43,6 +43,8 @@
     >
       <channel-edit
         :user-channels="channels"
+        @close="isChannelEditShow = false"
+        @update-activ="active = $event"
       />
     </van-popup>
   </div>
